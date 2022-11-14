@@ -20,6 +20,7 @@ private:
 		{0,0,0,0}
 	};
 public: 
+	~IBlock() { cout << "IBlock destroyed" << endl; }
 	vector<vector<int>> getBlock(int);
 
 };

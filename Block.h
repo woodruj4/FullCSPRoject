@@ -13,17 +13,20 @@ private:
 	vector<vector<int>> cBlock; //Current Block
 public:
 	Block();
+	~Block() { cout << "Block destroyed" << endl; }
+
+	vector<vector<int>> getBlock() { return cBlock; }
 	int getX() { return x; }
 	int getY() { return y; }
 	int getR() { return r; }
-	vector<vector<int>> getBlock() { return cBlock; }
+	int getCoords(int r, int c);
+
 	void setBlock(vector<vector<int>>);
 	void setX(int val) { x = val; }
 	void setY(int val) { y = val; }
 	void setR(int val) { r = val; }
-	
 	void setCoords();
-	int getCoords(int r, int c);
-	void printBlock();
+	
+	friend ostream& operator<<(ostream& os, Block b);
 };
 

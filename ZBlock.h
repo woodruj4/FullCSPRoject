@@ -19,6 +19,7 @@ private:
 	};
 
 public:
+	~ZBlock() { cout << "ZBlock destroyed" << endl; }
 	vector<vector<int>> getBlock(int);
 };
 

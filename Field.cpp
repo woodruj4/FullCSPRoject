@@ -34,13 +34,31 @@ void Field::resetField(){
 	}
 }
 
-void Field::printField() {
+void Field::fullReset() {
+	vFlag = false;	//Vertical Flag
+	hFlag = false;	//Horizontal Flag
+	lFlag = false;	//Lose Flag
+	sFlag = false;	//Set Flag
+	xState = 0;
+	rState = 0;
+	fdX = 0;
+	fdY = 2;
+	score = 0;
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 20; j++) {
-			cout << mField[i][j] << " ";
+			mField[i][j] = 0;
 		}
-		cout << endl;
 	}
+}
+
+ostream& operator <<(ostream& os, Field f) {
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 20; j++) {
+			os << f.mField[i][j];
+		}
+		os << endl;
+	}
+	return os;
 }
 
 void Field::checkYPos() {
@@ -161,17 +179,6 @@ void Field::checkTetris() {
 	}
 }
 
-void Field::printBlock() {
-	vector<vector<int>> b;
-	b.resize(4, vector<int>(4, 0));
-	b = tBlock.getBlock();
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			cout << b[i][j] << " ";
-		}
-		cout << endl;
-	}
-}
 void Field::setCoords() {
 	tBlock.setCoords();
 }

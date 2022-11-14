@@ -14,6 +14,7 @@ private:
 		{0,0,0,0}
 	};
 public:
+	~OBlock() { cout << "OBlock destroyed" << endl; }
 	vector<vector<int>> getBlock(int);
 };
 

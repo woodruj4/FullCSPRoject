@@ -31,6 +31,7 @@ private:
 		{0,0,0,0}
 	};
 public:
+	~JBlock() { cout << "JBlock destroyed" << endl; }
 	vector<vector<int>> getBlock(int);
 };
 
