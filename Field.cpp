@@ -84,7 +84,7 @@ void Field::checkXPos() {
 				hFlag = true;
 				break;
 			}
-			else if (mField[tBlock.getCoords(1, i)][tBlock.getCoords(0, i)] == 2) {
+			else if (mField[tBlock.getCoords(1, i)][tBlock.getCoords(0, i)+1] == 2) {
 				hFlag = true;
 				break;
 			}
@@ -98,6 +98,7 @@ void Field::setYPos() {
 			mField[tBlock.getCoords(1, i)][tBlock.getCoords(0, i)] = 2;
 		}
 		sFlag = true;
+		score += 10;
 	}
 	//Code for moving the block
 	else {
@@ -154,6 +155,7 @@ void Field::checkTetris() {
 				}
 			}
 			isComp = false;
+			score += 100;
 		}
 
 	}

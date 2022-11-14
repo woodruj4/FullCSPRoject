@@ -16,9 +16,10 @@ private:
 	int rState = 0;
 	int fdX = 0;
 	int fdY = 0;
+	int score = 0;
 public:
 	Field(Block);
-
+	int getScore() { return score; }
 	void setBlock(Block);
 	void setValue(int, int, int);
 	void setXState(int);

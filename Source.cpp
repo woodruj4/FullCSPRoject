@@ -124,16 +124,23 @@ int main()
 					}
 				}
 			}
+			for (int i = 0; i < 20; i++) {
+				screen[i+80] = L'*';
+				screen[i * 80+4] = L'*';
+				screen[i * 80 + 16] = L'*';
+				screen[i + (80 * 21)] = L'*';
+			}
+			
 			wchar_t tempChar;
-			string endMsg = "x: ";
-			string sScore = to_string(test);
+			string endMsg = "Your Score: ";
+			string sScore = to_string(mField.getScore());
 			for (int i = 0; i < endMsg.size(); i++) {
 				tempChar = (wchar_t)endMsg[i];
 				screen[i] = tempChar;
 			}
 			for (int i = 0; i < sScore.size(); i++) {
 				tempChar = (wchar_t)sScore[i];
-				screen[i + 80] = tempChar;
+				screen[i + 20] = tempChar;
 			}
 			WriteConsoleOutputCharacter(hConsole, screen, rows * columns, { 0,0 }, &dwBytesWritten);
 			this_thread::sleep_for(100ms); // Delay a bit
