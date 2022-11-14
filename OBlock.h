@@ -14,6 +14,6 @@ private:
 		{0,0,0,0}
 	};
 public:
-	vector<vector<int>> getBlock();
+	vector<vector<int>> getBlock(int);
 };
 

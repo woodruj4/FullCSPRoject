@@ -13,6 +13,7 @@ private:
 	bool lFlag = false;	//Lose Flag
 	bool sFlag = false;	//Set Flag
 	int xState = 0;
+	int rState = 0;
 	int fdX = 0;
 	int fdY = 0;
 public:
@@ -21,6 +22,7 @@ public:
 	void setBlock(Block);
 	void setValue(int, int, int);
 	void setXState(int);
+	void setRState(int);
 	void setfdX(int val) {
 		fdX = val;
 	}
@@ -36,10 +38,11 @@ public:
 	void checkXPos();
 	void setYPos();
 	void setXPos();
-
+	void setRot(vector<vector<int>>);
 	void checkTetris();
 
 	int getValue(int, int);
+	Block getBlock() { return tBlock; }
 	int getfdX() { return fdX;  }
 	int getfdY() { return fdY;  }
 	void setCoords();

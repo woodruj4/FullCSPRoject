@@ -20,6 +20,9 @@ void Field::setBlock(Block cBlock) {
 void Field::setXState(int xState) {
 	this->xState = xState;
 }
+void Field::setRState(int rState) {
+	this->rState = rState;
+}
 
 void Field::resetField(){
 	for (int i = 0; i < 20; i++) {
@@ -112,6 +115,20 @@ void Field::setXPos() {
 	}
 	else if (hFlag == false && xState == 1) {
 		tBlock.setX(tBlock.getX() + 1);
+	}
+}
+
+void Field::setRot(vector<vector<int>> b) {
+	
+	if (!hFlag && rState == 1) {
+		tBlock.setBlock(b);
+		if (tBlock.getR() + 1 > 3) {
+			tBlock.setR(0);
+		}
+		else {
+			tBlock.setR(tBlock.getR() + 1);
+		}
+		
 	}
 }
 

@@ -18,7 +18,8 @@ int nScreenWidth = 80;			// Console Screen Size X (columns)
 int nScreenHeight = 30;			// Console Screen Size Y (rows)
 
 int readInput();
-
+int readRot();
+vector<vector<int>> getRotateBlock(int blockNum, Block b, OBlock oB, ZBlock zB, IBlock iB, JBlock jB);
 int main()
 {
 	int pos = 0;
@@ -62,13 +63,17 @@ int main()
 	Field mField(block);
 	int test = 0;
 	bool isDone = false;
+	bool startGame = false;
 	//Reset the field
 	while (!isDone) {
+		/*while (!startGame) {
+			//Code to start the game and a menu
+		}*/
 		//Code for generating block
 		//test++;
 		blockNum = rand() % 4;
 		if (blockNum == 0) {
-			block.setBlock(oB.getBlock());
+			block.setBlock(oB.getBlock(block.getR()));
 		}
 		else if (blockNum == 1) {
 			block.setBlock(zB.getBlock(block.getR()));
@@ -81,6 +86,8 @@ int main()
 		}
 		mField.setBlock(block);
 		while (mField.getsFlag() == false) {
+			int test = readRot();
+			mField.setRState(test);
 			mField.setXState(readInput());
 			mField.resetField();
 			mField.setCoords();
@@ -93,6 +100,7 @@ int main()
 			mField.checkXPos();
 			mField.setYPos();
 			mField.setXPos();
+			mField.setRot(getRotateBlock(blockNum, mField.getBlock(), oB, zB, iB, jB));
 			/*
 			*	This code checks for complete "lines"
 			*	Allows for a "Tetris" to occur
@@ -118,7 +126,7 @@ int main()
 			}
 			wchar_t tempChar;
 			string endMsg = "x: ";
-			string sScore = to_string(mField.getsFlag());
+			string sScore = to_string(test);
 			for (int i = 0; i < endMsg.size(); i++) {
 				tempChar = (wchar_t)endMsg[i];
 				screen[i] = tempChar;
@@ -168,5 +176,22 @@ int readRot() {
 		rot = 0;
 	}
 	return rot;
+}
+vector<vector<int>> getRotateBlock(int blockNum, Block b, OBlock oB, ZBlock zB, IBlock iB, JBlock jB) {
+
+	if (blockNum == 0) {
+		b.setBlock(oB.getBlock(b.getR()+1));
+	}
+	else if (blockNum == 1) {
+		b.setBlock(zB.getBlock(b.getR()+1));
+	}
+	else if (blockNum == 2) {
+		b.setBlock(iB.getBlock(b.getR()+1));
+	}
+	else if (blockNum == 3) {
+		b.setBlock(jB.getBlock(b.getR()+1));
+	}
+
+	return b.getBlock();
 }
 
